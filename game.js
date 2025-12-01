@@ -253,7 +253,7 @@ let drawGameOver = () => {
     // Instrucción para reiniciar
     canvasContext.font = "14px Arial";
     canvasContext.fillStyle = "yellow";
-    canvasContext.fillText("Reiniciar", gameWidth / 2, (gameHeight - 40) / 2 + 30);
+    canvasContext.fillText("Touch screen to restart", gameWidth / 2, (gameHeight - 40) / 2 + 30);
 };
 
 let drawWinScreen = () => {
@@ -265,7 +265,7 @@ let drawWinScreen = () => {
     canvasContext.font = "30px Arial";
     canvasContext.fillStyle = "gold";
     canvasContext.textAlign = "center";
-    canvasContext.fillText("¡VICTORIA!", gameWidth / 2, (gameHeight - 40) / 2 - 40);
+    canvasContext.fillText("¡VICTORY!", gameWidth / 2, (gameHeight - 40) / 2 - 40);
     
     // Mensaje de felicitación
     canvasContext.font = "18px Arial";
@@ -280,7 +280,7 @@ let drawWinScreen = () => {
     // Instrucción para reiniciar
     canvasContext.font = "14px Arial";
     canvasContext.fillStyle = "yellow";
-    canvasContext.fillText("Jugar de nuevo", gameWidth / 2, (gameHeight - 40) / 2 + 50);
+    canvasContext.fillText("Touch screen to play again", gameWidth / 2, (gameHeight - 40) / 2 + 50);
 };
 
 let drawPauseScreen = () => {
@@ -292,12 +292,12 @@ let drawPauseScreen = () => {
     canvasContext.font = "30px Arial";
     canvasContext.fillStyle = "yellow";
     canvasContext.textAlign = "center";
-    canvasContext.fillText("PAUSA", gameWidth / 2, (gameHeight - 40) / 2 - 10);
+    canvasContext.fillText("PAUSED", gameWidth / 2, (gameHeight - 40) / 2 - 10);
     
     // Instrucción
     canvasContext.font = "14px Arial";
     canvasContext.fillStyle = "white";
-    canvasContext.fillText("Continuar", gameWidth / 2, (gameHeight - 40) / 2 + 30);
+    canvasContext.fillText("Touch screen to continue", gameWidth / 2, (gameHeight - 40) / 2 + 30);
 };
 
 let draw = () => {
@@ -410,7 +410,7 @@ function updateButtons() {
         restartBtn.textContent = 'Jugar de Nuevo';
     } else {
         pauseBtn.style.display = 'block';
-        pauseBtn.textContent = gamePaused ? 'Continuar' : 'Pausa';
+        pauseBtn.textContent = gamePaused ? 'Continue' : 'Pausa';
         restartBtn.style.display = 'none';
     }
 }
