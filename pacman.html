@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacman</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-image: radial-gradient(circle, #111 1px, transparent 1px);
+            background-size: 20px 20px;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .arcade-title {
+            font-family: 'Press Start 2P', cursive;
+            color: yellow;
+            font-size: 2.5em;
+            text-shadow: 
+                4px 4px 0px #000,
+                6px 6px 0px #ff0,
+                0 0 20px #ff0,
+                0 0 30px #ff0;
+            margin: 10px 0;
+            letter-spacing: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 
+                    4px 4px 0px #000,
+                    6px 6px 0px #ff0,
+                    0 0 10px #ff0,
+                    0 0 15px #ff0;
+            }
+            to {
+                text-shadow: 
+                    4px 4px 0px #000,
+                    6px 6px 0px #ff0,
+                    0 0 20px #ff0,
+                    0 0 30px #ff0,
+                    0 0 40px #ff0;
+            }
+        }
+        
+        .subtitle {
+            color: #fff;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8em;
+            margin: 10px 0 20px 0;
+            opacity: 0.8;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 10px 0;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            color: yellow;
+        }
+
+        .score-container, .lives-container {
+            background: rgba(52, 45, 202, 0.3);
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 2px solid #342DCA;
+        }
+
+        #game-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: black;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        #canvas {
+            display: block;
+            
+            border-radius: 10px;
+            max-width: 95vw;
+            max-height: 65vh;
+            image-rendering: pixelated;
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(52, 45, 202, 0.5);
+        }
+
+        #controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            background: #342DCA;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            user-select: none;
+            min-width: 100px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+        }
+
+        .control-btn:hover {
+            background: #4a43e0;
+        }
+
+        .control-btn:active {
+            background: #FEB897;
+            transform: scale(0.95);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Ocultar completamente los botones móviles */
+        #mobile-controls {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="arcade-title">PAC-MAN</h1>
+    
+    <div class="game-info">
+        <div class="score-container">
+            SCORE: <span id="score-display">0</span>
+        </div>
+        <div class="lives-container">
+            LIVES: <span id="lives-display">5</span>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <canvas id="canvas"></canvas>
+        <div id="controls">
+            <button id="pause-btn" class="control-btn">PAUSE</button>
+            <button id="restart-btn" class="control-btn hidden">PLAY AGAIN</button>
+        </div>
+
+        <!-- Botones táctiles completamente ocultos -->
+        <div id="mobile-controls" style="display: none;">
+            <button class="mobile-btn" id="up">↑</button>
+            <button class="mobile-btn" id="left">←</button>
+            <button class="mobile-btn" id="right">→</button>
+            <button class="mobile-btn" id="down">↓</button>
+        </div>
+    </div>
+
+    <!-- Elementos ocultos para precargar recursos -->
+    <div style="display:none;">
+        <img id="animation" src="animations.gif" width="140" height="20">
+        <img id="ghosts" src="ghost.png" width="140" height="20">
+    </div>
+
+    <script src="ghost.js"></script>
+    <script src="pacman.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
